@@ -40,9 +40,9 @@ Letters: K, L, N, O, P, W
 - `kite.wav` - "Now rescue the kite"
 - `lion.wav` - "Now rescue the lion"
 - `nose.wav` - "Now rescue the nose"
-- `owl.wav` - "Now rescue the owl"
+- `orange.wav` - "Now rescue the orange"
 - `pig.wav` - "Now rescue the pig"
-- `water.wav` - "Now rescue the water"
+- `watermelon.wav` - "Now rescue the watermelon"
 
 ## Level 4 Word Audio Files
 

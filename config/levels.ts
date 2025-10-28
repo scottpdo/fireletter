@@ -25,18 +25,18 @@ const level3Targets: RescueTarget[] = [
   { word: 'kite', letter: 'k', emoji: '🪁' },
   { word: 'lion', letter: 'l', emoji: '🦁' },
   { word: 'nose', letter: 'n', emoji: '👃' },
-  { word: 'owl', letter: 'o', emoji: '🦉' },
+  { word: 'orange', letter: 'o', emoji: '🍊' },
   { word: 'pig', letter: 'p', emoji: '🐷' },
-  { word: 'water', letter: 'w', emoji: '💧' },
+  { word: 'watermelon', letter: 'w', emoji: '🍉' },
 ]
 
 // Level 4: Focus on letters I, J, Q, U, V, Z
 const level4Targets: RescueTarget[] = [
-  { word: 'ice', letter: 'i', emoji: '🧊' },
-  { word: 'jump', letter: 'j', emoji: '🦘' },
+  { word: 'igloo', letter: 'i', emoji: '🧊' },
+  { word: 'juice', letter: 'j', emoji: '🧃' },
   { word: 'queen', letter: 'q', emoji: '👸' },
   { word: 'umbrella', letter: 'u', emoji: '☂️' },
-  { word: 'van', letter: 'v', emoji: '🚐' },
+  { word: 'violin', letter: 'v', emoji: '🎻' },
   { word: 'zebra', letter: 'z', emoji: '🦓' },
 ]
 

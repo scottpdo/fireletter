@@ -81,7 +81,7 @@ const Ground = styled.div`
 const Ladder = styled.div`
   position: absolute;
   bottom: -80px;
-  right: -100px;
+  right: -30px;
   width: 40px;
   height: calc(100% + 80px);
   background: repeating-linear-gradient(
@@ -99,20 +99,29 @@ const Ladder = styled.div`
   border-right: 6px solid #888;
   transform: rotate(10deg);
   transform-origin: bottom right;
+  
+  @media (max-width: 768px) {
+    right: 10px;
+    transform: rotate(5deg);
+  }
 `
 
 const FireEmoji = styled.div<{ $top?: string; $left?: string; $right?: string; $bottom?: string; $delay?: number }>`
   position: absolute;
-  font-size: 48px;
+  font-size: 36px;
   top: ${props => props.$top};
   left: ${props => props.$left};
   right: ${props => props.$right};
   bottom: ${props => props.$bottom};
   animation: ${sway} 2s ease-in-out infinite;
   animation-delay: ${props => props.$delay || 0}s;
-  z-index: 10;
+  z-index: 1;
   pointer-events: none;
   filter: drop-shadow(0 0 10px rgba(255, 100, 0, 0.8));
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `
 
 interface BuildingProps {
@@ -128,15 +137,13 @@ export default function Building({ windows, onWindowClick }: BuildingProps) {
         <Roof />
         <FireEffect />
         
-        {/* Fire emojis around the building */}
-        <FireEmoji $top="5%" $left="10%" $delay={0}>🔥</FireEmoji>
-        <FireEmoji $top="8%" $right="15%" $delay={0.3}>🔥</FireEmoji>
-        <FireEmoji $top="45%" $left="5%" $delay={0.6}>🔥</FireEmoji>
-        <FireEmoji $top="48%" $right="8%" $delay={0.9}>🔥</FireEmoji>
-        <FireEmoji $bottom="5%" $left="20%" $delay={0.2}>🔥</FireEmoji>
-        <FireEmoji $bottom="8%" $right="25%" $delay={0.5}>🔥</FireEmoji>
-        <FireEmoji $top="25%" $left="-3%" $delay={0.7}>🔥</FireEmoji>
-        <FireEmoji $top="30%" $right="-3%" $delay={0.4}>🔥</FireEmoji>
+        {/* Fire emojis around the building - positioned to avoid overlapping windows */}
+        <FireEmoji $top="2%" $left="5%" $delay={0}>🔥</FireEmoji>
+        <FireEmoji $top="2%" $right="8%" $delay={0.3}>🔥</FireEmoji>
+        <FireEmoji $top="48%" $left="2%" $delay={0.6}>🔥</FireEmoji>
+        <FireEmoji $top="48%" $right="2%" $delay={0.9}>🔥</FireEmoji>
+        <FireEmoji $bottom="2%" $left="15%" $delay={0.2}>🔥</FireEmoji>
+        <FireEmoji $bottom="2%" $right="18%" $delay={0.5}>🔥</FireEmoji>
         
         {windows.map((window, index) => (
           <Window

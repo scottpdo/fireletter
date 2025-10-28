@@ -70,7 +70,7 @@ const WindowDividerH = styled.div`
 `
 
 const Letter = styled.div`
-  font-size: 80px;
+  font-size: 64px;
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
