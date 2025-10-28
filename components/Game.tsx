@@ -273,13 +273,6 @@ export default function Game() {
             🔊
           </AudioButton>
           
-          <MusicToggle
-            onClick={() => setMusicEnabled(!musicEnabled)}
-            title={musicEnabled ? 'Mute music' : 'Play music'}
-          >
-            {musicEnabled ? '🔇' : '🎵'}
-          </MusicToggle>
-          
           <Building
             windows={windows}
             onWindowClick={handleWindowClick}

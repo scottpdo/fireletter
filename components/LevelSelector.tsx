@@ -19,31 +19,27 @@ const SelectorContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   animation: ${fadeIn} 0.6s ease-out;
-`
-
-const Title = styled.h1`
-  font-size: 64px;
-  font-weight: bold;
-  color: #ff6b6b;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-  margin: 0;
-  text-align: center;
-`
-
-const Subtitle = styled.p`
-  font-size: 28px;
-  color: #333;
-  margin: 0;
-  text-align: center;
+  padding: 20px;
+  max-height: 100vh;
+  
+  @media (max-width: 768px) {
+    gap: 15px;
+    padding: 10px;
+  }
 `
 
 const LevelGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
+  
+  @media (max-width: 768px) {
+    gap: 15px;
+    margin-top: 5px;
+  }
 `
 
 const LevelButton = styled.button`
@@ -68,12 +64,12 @@ const LevelButton = styled.button`
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-`
-
-const FireTruck = styled.div`
-  font-size: 80px;
-  margin-bottom: 20px;
-  animation: ${fadeIn} 0.8s ease-out 0.2s both;
+  
+  @media (max-width: 768px) {
+    padding: 20px 30px;
+    font-size: 24px;
+    min-width: 140px;
+  }
 `
 
 interface LevelSelectorProps {
@@ -83,10 +79,6 @@ interface LevelSelectorProps {
 export default function LevelSelector({ onSelectLevel }: LevelSelectorProps) {
   return (
     <SelectorContainer>
-      <FireTruck>🚒</FireTruck>
-      <Title>FireLetter</Title>
-      <Subtitle>Choose a level to start rescuing!</Subtitle>
-      
       <LevelGrid>
         {levels.map((level, index) => (
           <LevelButton key={index} onClick={() => onSelectLevel(index)}>
