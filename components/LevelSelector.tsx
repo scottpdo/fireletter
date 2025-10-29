@@ -81,7 +81,7 @@ export default function LevelSelector({ onSelectLevel }: LevelSelectorProps) {
     <SelectorContainer>
       <LevelGrid>
         {levels.map((level, index) => (
-          <LevelButton key={index} onClick={() => onSelectLevel(index)}>
+          <LevelButton key={index} onPointerDown={() => setTimeout(() => onSelectLevel(index), 100)}>
             {level.name}
           </LevelButton>
         ))}

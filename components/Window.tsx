@@ -101,7 +101,7 @@ export default function Window({ window, onClick }: WindowProps) {
 
   return (
     <WindowFrame
-      onClick={onClick}
+      onPointerDown={() => setTimeout(onClick, 100)}
       $isRevealed={window.isRevealed}
       $isRescued={window.isRescued}
       $isClickable={isClickable}
