@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
-import { levels } from '@/config/levels'
-import { WindowState, GamePhase } from '@/types/game'
+import { levels, getRandomWordForLetter } from '@/config/levels'
+import { WindowState, GamePhase, RescueTarget } from '@/types/game'
 import { useAudioPlayer } from '@/hooks/useAudioPlayer'
 import { useBackgroundMusic } from '@/hooks/useBackgroundMusic'
 import Building from './Building'
@@ -119,8 +119,14 @@ export default function Game() {
   // Initialize level
   const startLevel = useCallback((levelIndex: number) => {
     const level = levels[levelIndex]
+    
+    // Get random words for each letter in this level
+    const targets: RescueTarget[] = level.letters.map(letter => 
+      getRandomWordForLetter(letter)
+    )
+    
     // Shuffle the targets for random letter placement in windows
-    const shuffledForWindows = shuffleArray(level.targets)
+    const shuffledForWindows = shuffleArray(targets)
     const initialWindows: WindowState[] = shuffledForWindows.map((target) => ({
       target,
       isRevealed: false,
@@ -128,7 +134,7 @@ export default function Game() {
     }))
     
     // Shuffle separately for prompt order
-    const shuffledForPrompts = shuffleArray(level.targets)
+    const shuffledForPrompts = shuffleArray(targets)
     const promptOrderWords = shuffledForPrompts.map(t => t.word)
     
     setWindows(initialWindows)

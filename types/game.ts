@@ -10,10 +10,5 @@ export interface WindowState {
   isRescued: boolean // Was it successful?
 }
 
-export interface Level {
-  name: string
-  targets: RescueTarget[]
-}
-
 export type GamePhase = 'intro' | 'playing' | 'won'
 

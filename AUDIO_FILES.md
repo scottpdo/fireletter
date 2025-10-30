@@ -11,56 +11,151 @@ These are used for game feedback and transitions:
 - `try-again.wav` - "Try again!"
 - `you-win.wav` - "You rescued everyone! You win!"
 
-## Level 1 Word Audio Files
+## Word Audio Files
 
-Letters: B, C, D, M, E, T
+The game now uses **word pools** - each letter has multiple word options. A random word is selected for each letter when a level starts, adding variety and replayability.
 
-- `bear.wav` - "Now rescue the bear"
-- `cat.wav` - "Now rescue the cat"
-- `dog.wav` - "Now rescue the dog"
-- `monkey.wav` - "Now rescue the monkey"
-- `egg.wav` - "Now rescue the egg"
-- `toy.wav` - "Now rescue the toy"
+Prompt format: "Now rescue the [word]"
 
-## Level 2 Word Audio Files
+### Level 1 Letters: B, C, D, M, E, T
 
-Letters: A, F, G, H, R, S
+**B words:**
+- `bear.wav`
+- `ball.wav`
+- `bird.wav`
+- `boat.wav`
 
-- `apple.wav` - "Now rescue the apple"
-- `goat.wav` - "Now rescue the goat"
-- `hat.wav` - "Now rescue the hat"
-- `fish.wav` - "Now rescue the fish"
-- `robot.wav` - "Now rescue the robot"
-- `snake.wav` - "Now rescue the snake"
+**C words:**
+- `cat.wav`
+- `car.wav`
+- `cake.wav`
 
-## Level 3 Word Audio Files
+**D words:**
+- `dog.wav`
+- `duck.wav`
+- `dinosaur.wav`
 
-Letters: K, L, N, O, P, W
+**M words:**
+- `monkey.wav`
+- `moon.wav`
+- `mouse.wav`
 
-- `kite.wav` - "Now rescue the kite"
-- `lion.wav` - "Now rescue the lion"
-- `nose.wav` - "Now rescue the nose"
-- `orange.wav` - "Now rescue the orange"
-- `pig.wav` - "Now rescue the pig"
-- `watermelon.wav` - "Now rescue the watermelon"
+**E words:**
+- `egg.wav`
+- `elephant.wav`
 
-## Level 4 Word Audio Files
+**T words:**
+- `toy.wav`
+- `truck.wav`
+- `tree.wav`
 
-Letters: I, J, Q, U, V, Z
+### Level 2 Letters: A, F, G, H, R, S
 
-- `ice.wav` - "Now rescue the ice"
-- `jump.wav` - "Now rescue the jump"
-- `queen.wav` - "Now rescue the queen"
-- `umbrella.wav` - "Now rescue the umbrella"
-- `van.wav` - "Now rescue the van"
-- `zebra.wav` - "Now rescue the zebra"
+**A words:**
+- `apple.wav`
+- `ant.wav`
+- `alligator.wav`
+
+**F words:**
+- `fish.wav`
+- `frog.wav`
+- `flower.wav`
+
+**G words:**
+- `goat.wav`
+- `giraffe.wav`
+- `grapes.wav`
+
+**H words:**
+- `hat.wav`
+- `horse.wav`
+- `house.wav`
+
+**R words:**
+- `robot.wav`
+- `rabbit.wav`
+- `rocket.wav`
+
+**S words:**
+- `snake.wav`
+- `sun.wav`
+- `star.wav`
+
+### Level 3 Letters: K, L, N, O, P, W
+
+**K words:**
+- `kite.wav`
+- `key.wav`
+- `koala.wav`
+
+**L words:**
+- `lion.wav`
+- `leaf.wav`
+- `lemon.wav`
+
+**N words:**
+- `nose.wav`
+- `nest.wav`
+
+**O words:**
+- `orange.wav`
+- `owl.wav`
+- `octopus.wav`
+
+**P words:**
+- `pig.wav`
+- `pizza.wav`
+- `penguin.wav`
+
+**W words:**
+- `watermelon.wav`
+- `water.wav`
+- `whale.wav`
+- `watch.wav`
+
+### Level 4 Letters: I, J, Q, U, V, Z
+
+**I words:**
+- `igloo.wav`
+- `ice.wav`
+
+**J words:**
+- `juice.wav`
+- `jet.wav`
+- `jump.wav`
+
+**Q words:**
+- `queen.wav`
+
+**U words:**
+- `umbrella.wav`
+
+**V words:**
+- `violin.wav`
+- `van.wav`
+
+**Z words:**
+- `zebra.wav`
 
 ---
 
-## Total Audio Files Needed: 28
+## Total Audio Files
 
-- 4 system audio files
-- 24 word prompt audio files (6 per level × 4 levels)
+- **4 system audio files**
+- **68 word audio files** (varies by letter - some have 2-4 options each)
+- **Total: 72 audio files**
+
+## Recording Strategy
+
+### Priority 1: Core Words (24 files)
+Record at least one word per letter to get the game fully functional:
+- bear, cat, dog, monkey, egg, toy (Level 1)
+- apple, fish, goat, hat, robot, snake (Level 2)
+- kite, lion, nose, orange, pig, watermelon (Level 3)
+- igloo, juice, queen, umbrella, violin, zebra (Level 4)
+
+### Priority 2: Additional Options
+Add variety by recording additional words for each letter as time allows.
 
 ## Recording Tips
 
@@ -79,6 +174,26 @@ Letters: I, J, Q, U, V, Z
 - `.wav` extension
 - Match the word exactly as it appears in `/config/levels.ts`
 
+## Adding More Words
+
+To add more word options for any letter:
+
+1. Edit `/config/levels.ts`
+2. Add the new word to the appropriate letter's array in `wordPools`
+3. Record and add the corresponding `.wav` file to `/public/audio/`
+4. Update this list
+
+Example:
+```typescript
+b: [
+  { word: 'bear', letter: 'b', emoji: '🐻' },
+  { word: 'ball', letter: 'b', emoji: '⚽' },
+  { word: 'banana', letter: 'b', emoji: '🍌' }, // NEW!
+],
+```
+
+Then record `banana.wav`.
+
 ## Testing
 
 After adding audio files, test:
@@ -88,4 +203,4 @@ After adding audio files, test:
 - ✅ "Try again" plays on incorrect answer
 - ✅ Win message plays at end
 - ✅ Repeat button (🔊) replays current word prompt
-
+- ✅ Different words appear when replaying same level
